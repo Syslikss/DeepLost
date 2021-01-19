@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BasePanel : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
@@ -37,6 +36,16 @@ public class BasePanel : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
         if (d != null)
         {
             d.DefaultParentTransform = transform.GetChild(0).transform;
+        }
+    }
+
+    public void Clear()
+    {
+        for (int i = transform.GetChild(0).childCount - 1; i >= 0; i--)
+        {
+            transform.GetChild(0).GetChild(i).GetComponent<DragElement>().DefaultParentTransform = DragPanelTransform.transform;
+            transform.GetChild(0).GetChild(i).GetComponent<DragElement>().placeholderParent = DragPanelTransform.transform;
+            transform.GetChild(0).GetChild(i).transform.SetParent(DragPanelTransform.transform);
         }
     }
 }

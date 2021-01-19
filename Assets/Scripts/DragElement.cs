@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class DragElement : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler, IPointerDownHandler
 {
+    [SerializeField]
+
     public Transform placeholderParent = null;
 
     [SerializeField]
     private Transform defaultParentTransform;
+    [SerializeField]
 
     private Transform dragParentTransform;
     private Vector3 linkedInGameVector;
